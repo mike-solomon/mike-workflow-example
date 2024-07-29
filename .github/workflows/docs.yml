@@ -12,13 +12,17 @@ jobs:
     name: Update test doc in rewrite-docs
     runs-on: ubuntu-latest
     steps:
+      # Test release
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
       # Load SSH deploy-key
       - uses: webfactory/ssh-agent@v0.8.0
         with:
           ssh-private-key: ${{ secrets.REWRITE_DOCS_DEPLOY_KEY }}
 
-      # Push the CLI reference to moderne-docs
-      - name: Push to moderne-docs
+      # Push the test release to rewrite-docs
+      - name: Push to rewrite-docs
         run: |
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
