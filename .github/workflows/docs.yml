@@ -29,7 +29,6 @@ jobs:
           git clone git@github.com:openrewrite/rewrite-docs.git
           export tag=${{ github.ref_name }}
           printf "\n${tag#v}\n" >> test-doc.md
-          git add --all && git commit --message "New release ${{ github.ref_name }}" && git push --set-upstream origin main
           cp test-doc.md rewrite-docs/test-doc.md
           cd rewrite-docs/
           git add --all && git commit --message "Mike-test with reference ${{ github.ref_name }}" && git push --set-upstream origin master
