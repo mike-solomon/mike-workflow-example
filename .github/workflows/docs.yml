@@ -28,4 +28,5 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git clone git@github.com:openrewrite/rewrite-docs.git
           cp test-doc.md rewrite-docs/test-doc.md
+          cd rewrite-docs/
           git add --all && git commit --message "Mike-test with reference ${{ github.ref_name }}" && git push --set-upstream origin main
