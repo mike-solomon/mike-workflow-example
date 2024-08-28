@@ -21,14 +21,25 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.REWRITE_DOCS_DEPLOY_KEY }}
 
-      # Push the test release to rewrite-docs
+      # Push the test doc to rewrite-docs
       - name: Push to rewrite-docs
         run: |
+          # Set up the user who will make the commit. This is just the GitHub bot.
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
+
+          # Clone the repository you want to copy the docs over to (this is my GitBook repo).
           git clone git@github.com:openrewrite/rewrite-docs.git
+
+          # Create a tag variable which is release version.
           export tag=${{ github.ref_name }}
+
+          # Add this variable to the end of the test-doc just to show you can.
           printf "\n${tag#v}\n" >> test-doc.md
+
+          # Copy the test doc over to the GitBook repo.
           cp test-doc.md rewrite-docs/test-doc.md
+
+          # Add the file, create a commit, and push the file to the repo.
           cd rewrite-docs/
           git add --all && git commit --message "Mike-test with reference ${{ github.ref_name }}" && git push --set-upstream origin master
