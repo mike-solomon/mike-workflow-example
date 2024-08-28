@@ -12,11 +12,11 @@ jobs:
     name: Update test doc in rewrite-docs
     runs-on: ubuntu-latest
     steps:
-      # Test release
+      # Needed to check out the repository where our docs are
       - name: Checkout code
         uses: actions/checkout@v4
         
-      # Load SSH deploy-key
+      # Needed to push the changes to the docs repository
       - uses: webfactory/ssh-agent@v0.8.0
         with:
           ssh-private-key: ${{ secrets.REWRITE_DOCS_DEPLOY_KEY }}
