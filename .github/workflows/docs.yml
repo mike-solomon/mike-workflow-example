@@ -12,7 +12,8 @@ jobs:
     name: Update test doc in rewrite-docs
     runs-on: ubuntu-latest
     steps:
-      # Needed to check out the repository where our docs are
+      # Allows us to modify the test-doc.md file in this repo in the
+      # push to rewrite-docs step.
       - name: Checkout code
         uses: actions/checkout@v4
         
