@@ -13,7 +13,7 @@ A test repository for demonstrating how to set up GitBook doc automation across 
 4. Go to the documentation repository that's managed by GitBook in GitHub and navigate to `Settings` -> `Deploy keys`.
 5. Press `Add deploy key` and then paste in the public key that was generated. Give it any descriptive title you want. **Make sure to check allow write access**.
 
-## How to create a GitHub Action for doc generation
+## How to create a GitHub workflow for doc generation
 
 1. From the repository where you'll generate docs, create a `.github/workflows` directory.
 2. Inside of that directory, create a YAML file with a descriptive name such as `docs.yml`.
